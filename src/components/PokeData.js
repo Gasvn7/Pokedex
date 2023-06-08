@@ -22,6 +22,18 @@ const PokeData = ({ pokemonData }) => {
 
   return (
     <ul className="listaPokemons">
+        <li>
+          <div className='pokemonDetalles'>
+            <p className='pokemonDexNum' >Número en Pokedex</p>
+            <div className='pokemonDexImgSpc'>
+              <p className='header'>Diseño de Pokémon</p>
+            </div>
+            <p className='pokemonDexNameHeader'>Nombre de Pokémon</p>
+            <div className='pokemonTipos' >
+                <p>Tipos</p>
+            </div>
+          </div>
+        </li>
       {pokemonDetails.map((pokemon, index) => (
         <li key={pokemon.name}>
           <div className='pokemonDetalles'>

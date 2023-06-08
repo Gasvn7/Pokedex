@@ -24,6 +24,37 @@ body {
     padding: 20px;
 }
 
+.sidebar{
+    width: 20%;
+    padding: 15px 0;
+    background-color: antiquewhite;
+    display:flex;
+    border: 1px solid black;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sidebar form{
+    display: flex;
+}
+
+.sidebar input{
+    font-size: 16px;
+    height: 30px;
+}
+
+.sidebar button{
+    font-size: 20px;
+}
+
+.sidebar button i{
+    padding-top: 5px;
+}
+
+.sidebar input[type="text"]:focus {
+    outline: none;
+}
+
 .Logo-Dex{
     width: 275px;
     font-size: 50px;
@@ -34,10 +65,19 @@ body {
     justify-content: space-between;
 }
 
+.pokeMain{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 50px;
+}
+
 .listaPokemons{
+    width: 70%;
     list-style-type: none;
     margin: 0;
+    background-color: antiquewhite;
     padding: 0;
+    border: 1px solid black;
 }
 
 .pokemonDetalles{
@@ -47,20 +87,23 @@ body {
 }
 
 .pokemonDexNum{
+    display: flex;
+    justify-content: center;
     margin: 0 10px 0 10px;
-    width: 5%;
+    width: 15%;
 }
 
 .pokemonDexImgSpc{
-    width: 5%;
     display: flex;
     justify-content: center;
+    width: 15%;
 }
 
 .pokemonDexImg{
-    width: 64px;
-    height: 64px;
+    width: 86px;
+    height: 86px;
 }
+
 
 .pokemonDexName{
     display: flex;
@@ -69,14 +112,21 @@ body {
     font-family: sans-serif;
     color: #002bb8;
     text-decoration: none;
-    width: 20%;
+    width: 25%;
+    justify-content: center;
+}
+
+.pokemonDexNameHeader{
+    display: flex;
+    text-decoration: none;
+    width: 25%;
     justify-content: center;
 }
 
 .pokemonTipos{
     padding: 0;
     margin: 0;
-    width: 20%;
+    width: 45%;
     display: flex;
     justify-content: space-around;
 }

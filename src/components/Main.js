@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PokeData from './PokeData';
+import PokeSideBar from './PokeSideBar';
 
 const Main = () => {
 
@@ -23,7 +24,8 @@ const Main = () => {
     }, [])
 
     return (
-    <main>
+    <main className='pokeMain'>
+        <PokeSideBar />
         <PokeData pokemonData={pokemonData}/>
     </main>
     )
