@@ -36,6 +36,7 @@ body {
 
 .sidebar form{
     display: flex;
+    padding: 10px 0;
 }
 
 .sidebar input{
@@ -53,6 +54,18 @@ body {
 
 .sidebar input[type="text"]:focus {
     outline: none;
+}
+
+.sidebarLinks {
+    width: 100%;
+    display: flex;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-family: sans-serif;
+    color: black;
+    text-decoration: none;
+    justify-content: center;
+    padding: 10px 0;
 }
 
 .Logo-Dex{

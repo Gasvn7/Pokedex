@@ -14,9 +14,9 @@ function PokeSideBar() {
          <i className='bx bx-search'></i>
         </button>
       </form>
-      <a href='/'>Aasdasd</a>
-      <a href='/'>asdasdas</a>
-      <a href='/'>oaoao</a>
+      <a href='/' className='sidebarLinks'>Ir al inicio</a>
+      <a href='/' className='sidebarLinks'>Equipos</a>
+      <a href='/' className='sidebarLinks'>Regiones</a>
     </div>
   );
 }
