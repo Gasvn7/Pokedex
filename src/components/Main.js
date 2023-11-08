@@ -23,9 +23,9 @@ const Main = () => {
         const response = await axios.get(url);
         const data = response.data;
         if (searchTerm) {
-          setPokemonData([data]);
+          setPokemonData(data);
         } else {
-          setPokemonData(data.results);
+          setPokemonData(data.results); 
         }
       } catch (error) {
         console.log(error);

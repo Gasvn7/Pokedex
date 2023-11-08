@@ -2,6 +2,7 @@ import React from 'react';
 import PokemonType from './PokemonType';
 
 const PokemonData = ({ pokemonData }) => {
+  console.log(pokemonData)
   if (!pokemonData) {
     return <div>Loading...</div>;
   }
@@ -9,7 +10,7 @@ const PokemonData = ({ pokemonData }) => {
   return (
     <ul className='listaPokemons'>
         <li>
-        <p className='pokemonDexNum' >Número {pokemonData.id}</p>
+        <p className='pokemonDexNum' >Nº {pokemonData.id}</p>
         <div className='pokemonDexImgSpc'>
             <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}

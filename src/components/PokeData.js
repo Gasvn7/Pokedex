@@ -37,6 +37,7 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
       const data = response.data;
+      console.log(data)
       setCurrentPokemon(data);
     } catch (error) {
       console.error(error);
