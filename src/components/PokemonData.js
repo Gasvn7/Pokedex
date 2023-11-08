@@ -13,7 +13,7 @@ const PokemonData = ({ pokemonData }) => {
         <p className='pokemonDexNum' >Nº {pokemonData.id}</p>
         <div className='pokemonDexImgSpc'>
             <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
             alt={pokemonData.name}
             className='pokemonDexImg'
             />
