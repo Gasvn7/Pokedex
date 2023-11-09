@@ -8,26 +8,32 @@ const PokemonData = ({ pokemonData }) => {
   }
 
   return (
-    <ul className='listaPokemons'>
-        <li>
-        <p className='pokemonDexNum' >Nº {pokemonData.id}</p>
-        <div className='pokemonDexImgSpc'>
-            <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
-            alt={pokemonData.name}
-            className='pokemonDexImg'
-            />
-        </div>
-        <p className='pokemonDexName'>{pokemonData.name}</p>
+    <div className='pokeInd'>
+      
+      <p className='pokemonDexNameInd'>{pokemonData.name}</p>
+      <img
+      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
+      alt={pokemonData.name}
+      className='pokemonDexImgInd'
+      />
+      <p className='pokemonDexNumInd' >Nº {pokemonData.id}</p>
+      <div className='pokeIndPartes'>
+        <p className='pokeIndP1'>Tipo</p>
+        <div className='pokeIndP2'>
         {pokemonData.types && pokemonData.types.length > 0 ? (
-            <div className='pokemonTipos' >
+            <div className='pokemonTiposInd' >
             {pokemonData.types.map((type, index) => (
                 <PokemonType key={index} type={type.type.name} />
             ))}
             </div>
-        ) : null}
-        </li>
-    </ul>
+          ) : null}
+        </div>
+      </div>
+      <p>Habilidad: </p>
+      <p>Peso: {pokemonData.weight}</p>
+      <p>Altura: {pokemonData.height}</p>
+
+    </div>
   );
 };
 
