@@ -22,7 +22,7 @@ const PokemonData = ({ pokemonData }) => {
           habilidades.push(<p key={index}>{nombre}</p>);
         } else {
           etiquetHabOc = index === 0 ? "Hab. Oculta" : "Hab. Ocultas"
-          habilidadesOc.push(<p key={index}> {nombre}</p>);
+          habilidadesOc.push(<p key={index}>{nombre}</p>);
         }
       });
     }
@@ -99,13 +99,13 @@ const PokemonData = ({ pokemonData }) => {
         <div className='pokeIndPartes'>
           <p className='pokeIndP1'>Peso</p>
           <div className='pokeIndP2'>
-            <p>{peso}</p>
+            <p>{peso} kg</p>
           </div>
         </div>
         <div className='pokeIndPartes'>
           <p className='pokeIndP1'>Altura</p>
           <div className='pokeIndP2'>
-            <p>{altura}</p>
+            <p>{altura} m</p>
           </div>
         </div>
   
