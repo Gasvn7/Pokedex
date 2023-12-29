@@ -327,10 +327,31 @@ Cambios desde:
 - 1280+
 */
 
-@media (0px <= width <= 600px){
-    body{
-        background-color: blue
-    };
+@media (0px <= width <= 480px){
+    /* SideBar */
+    .sidebar{
+        display: none;
+    }
+    /* Detalles de Pokemon */
+    .listaPokemons{
+        width: 90%;
+    }
+    /* Nombres */
+    .pokemonDexName{
+        font-size: 14px;
+    }
+    /* Imagenes */
+    .pokemonDexImg{
+        width: 64px;
+        height: 64px;
+    }
+    /* Tipos */
+    .tipos{
+        min-width: 30px
+    }
+    .tiposNombre{
+        display: none;
+    }
 }
 @media (600px <= width <= 1280px){
     body{
