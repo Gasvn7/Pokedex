@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Header from './Header';
+import PokeSideBar from './PokeSideBar';
 import PokemonType from './PokemonType';
 
-const PokemonData = ({ pokemonData }) => {
+const PokemonData = () => {
+  const { nombreParams } = useParams();
+  const navigate = useNavigate();
+  const [pokemonData, setPokemonData] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    console.log('Efecto ejecutado con nombreParams:', nombreParams);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nombreParams}`);
+        const data = response.data;
+        setPokemonData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+      fetchData();
+  }, [nombreParams, searchTerm]);
+
+
+  
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+  
+
+  const handleNavigate = (to) => {
+    navigate(to);
+  };
+  
   if (Array.isArray(pokemonData)) {
-    console.log('Cargando')
     return <div>Loading...</div>
 
   } else if (typeof pokemonData === 'object' && pokemonData !== null) {
@@ -26,8 +61,6 @@ const PokemonData = ({ pokemonData }) => {
         }
       });
     }
-    console.log(habilidades, habilidadesOc);
-    
 
     // SI TIENE HABILIDAD ESCONDIDA SE CREARÁ UN ELEMENTO CON CONDICIONAL PARA MOSTRAR HABILIDAD OCULTA
 
@@ -55,61 +88,70 @@ const PokemonData = ({ pokemonData }) => {
     comaAlNum(pokemonData.height, pokemonData.weight)
   
     return (
-      <div className='pokeInd'>
-        
-        <div className='pokeIndSup'>
-          <div className='pokeIndSupP1'>
-            <p className='pokemonDexNameInd'>{pokemonData.name}</p>
-            <p className='pokemonDexNumInd' >Nº{pokemonData.id}</p>
-          </div>
-          <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
-          alt={pokemonData.name}
-          className='pokemonDexImgInd'
+      <>
+      <Header/>
+      <main className='pokeMain'>
+        <PokeSideBar
+          onSearch={handleSearch}
+          onNavigate={handleNavigate}
           />
-          <div className='pokeIndSupP2'>
-            <p className='pokeIndP1'>Tipo</p>
-            <div className='pokeIndP2'>
-            {pokemonData.types && pokemonData.types.length > 0 ? (
-                <div className='pokemonTiposInd' >
-                {pokemonData.types.map((type, index) => (
-                    <PokemonType key={index} type={type.type.name} />
-                ))}
-                </div>
-              ) : null}
+        <div className='pokeInd'>
+          <a href='/' className='flotante'>Volver </a>
+          <div className='pokeIndSup'>
+            <div className='pokeIndSupP1'>
+              <p className='pokemonDexNameInd'>{pokemonData.name}</p>
+              <p className='pokemonDexNumInd' >Nº{pokemonData.id}</p>
+            </div>
+            <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
+            alt={pokemonData.name}
+            className='pokemonDexImgInd'
+            />
+            <div className='pokeIndSupP2'>
+              <p className='pokeIndP1'>Tipo</p>
+              <div className='pokeIndP2'>
+              {pokemonData.types && pokemonData.types.length > 0 ? (
+                  <div className='pokemonTiposInd' >
+                  {pokemonData.types.map((type, index) => (
+                      <PokemonType key={index} type={type.type.name} />
+                  ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
-        <div className='pokeIndPartes'>
-          <p className='pokeIndP1'>{etiquetHab}</p>
-          <div className='pokeIndP2'>
-            {habilidades}
-          </div>
-        </div>
-        
-        {habilidadesOc.length > 0 ?
           <div className='pokeIndPartes'>
-            <p className='pokeIndP1'>{etiquetHabOc}</p>
+            <p className='pokeIndP1'>{etiquetHab}</p>
             <div className='pokeIndP2'>
-              {habilidadesOc}
+              {habilidades}
             </div>
           </div>
-          : null
-        }
-        <div className='pokeIndPartes'>
-          <p className='pokeIndP1'>Peso</p>
-          <div className='pokeIndP2'>
-            <p>{peso}</p>
+          
+          {habilidadesOc.length > 0 ?
+            <div className='pokeIndPartes'>
+              <p className='pokeIndP1'>{etiquetHabOc}</p>
+              <div className='pokeIndP2'>
+                {habilidadesOc}
+              </div>
+            </div>
+            : null
+          }
+          <div className='pokeIndPartes'>
+            <p className='pokeIndP1'>Peso</p>
+            <div className='pokeIndP2'>
+              <p>{peso}</p>
+            </div>
           </div>
-        </div>
-        <div className='pokeIndPartes'>
-          <p className='pokeIndP1'>Altura</p>
-          <div className='pokeIndP2'>
-            <p>{altura}</p>
+          <div className='pokeIndPartes'>
+            <p className='pokeIndP1'>Altura</p>
+            <div className='pokeIndP2'>
+              <p>{altura}</p>
+            </div>
           </div>
-        </div>
-  
-      </div>
+    
+          </div>
+        </main>
+      </>
     );
   } else {
     return <div>ERROR</div>

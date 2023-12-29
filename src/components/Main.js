@@ -1,32 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 import PokeData from './PokeData';
 import PokeSideBar from './PokeSideBar';
-import PokemonData from './PokemonData'
 
 const Main = () => {
+  const navigate = useNavigate();
   const [pokemonData, setPokemonData] = useState([]);
   const [offset, setOffset] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (term) => {
-    setSearchTerm(term.toLowerCase());
+    setSearchTerm(term);
+  };
+  const handleNavigate = (to) => {
+    navigate(to);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`;
-        if (searchTerm) {
-          url = `https://pokeapi.co/api/v2/pokemon/${searchTerm}`;
-        }
+
         const response = await axios.get(url);
         const data = response.data;
-        if (searchTerm) {
-          setPokemonData(data);
-        } else {
-          setPokemonData(data.results); 
-        }
+        setPokemonData(data.results); 
       } catch (error) {
         console.log(error);
       }
@@ -36,14 +35,20 @@ const Main = () => {
   }, [offset, searchTerm]);
 
   return (
-    <main className='pokeMain'>
-      <PokeSideBar onSearch={handleSearch} />
-      
-      {searchTerm ? 
-      <PokemonData pokemonData={pokemonData} /> 
-      : 
-      <PokeData pokemonData={pokemonData} offset={offset} setOffset={setOffset} />}
-    </main>
+    <>
+      <Header />
+      <main className='pokeMain'>
+        <PokeSideBar
+          onSearch={handleSearch}
+          onNavigate={handleNavigate}
+        />
+        <PokeData
+          pokemonData={pokemonData}
+          offset={offset}
+          setOffset={setOffset}
+        />
+      </main>
+    </>
   );
 };
 

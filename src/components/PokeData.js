@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import PokemonType from './PokemonType';
-import PokemonData from './PokemonData'
 
 const PokeData = ({ pokemonData, offset, setOffset }) => {
   const [pokemonDetails, setPokemonDetails] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -31,24 +32,22 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
     }
   };
 
-  const [currentPokemon, setCurrentPokemon] = useState(null);
-
   const handlePokemonClick = async (pokemonName) => {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
       const data = response.data;
-      console.log(data)
-      setCurrentPokemon(data);
+
+      navigate(`/pokemon/${pokemonName}`, {state: {pokemonData: data}})
     } catch (error) {
       console.error(error);
     }
+
+    
   };
 
   return (
     <>
-      {currentPokemon ? (
-        <PokemonData pokemonData={currentPokemon} />
-     ):(<ul className="listaPokemons">
+    <ul className="listaPokemons">
       <li className='botonSigAnt'>
         <button className="SigAntPageSup" onClick={handlePreviousPage} disabled={offset === 0}>
           Anterior
@@ -60,18 +59,18 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
       <li>
         <div className='pokemonDetalles'>
           <p className='pokemonDexNum' >Número</p>
-          <div className='pokemonDexImgSpc'>
+          <div className='pokemonDexImgSpc headersLista'>
             <p className='header'>Diseño</p>
           </div>
-          <p className='pokemonDexNameHeader'>Nombre</p>
-          <div className='pokemonTipos' >
+          <p className='pokemonDexNameHeader headersLista'>Nombre</p>
+          <div className='pokemonTipos headersLista' >
             <p>Tipos</p>
           </div>
         </div>
       </li>
       {pokemonDetails.map((pokemon) => (
         <li key={pokemon.id}>
-          <div className='pokemonDetalles'>
+          <div className='pokemonDetalles' onClick={() => handlePokemonClick(pokemon.name)}>
             <p className='pokemonDexNum' >Nº {pokemon.id}</p>
             <div className='pokemonDexImgSpc'>
               <img
@@ -80,7 +79,7 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
                 className='pokemonDexImg'
               />
             </div>
-            <p className='pokemonDexName' onClick={() => handlePokemonClick(pokemon.name)}>
+            <p className='pokemonDexName'>
                 {pokemon.name}
               </p>
             {pokemon.types && pokemon.types.length > 0 ? (
@@ -101,7 +100,7 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
           Siguiente
         </button>
       </li>
-    </ul>)}
+    </ul>
     </>
   );
 };
