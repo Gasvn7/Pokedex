@@ -396,7 +396,7 @@ body {
     .pokemonTiposInd .tipos{
         min-width: 100px;
     }
-    .tiposNombre{
+    .pokeIndP2 .tiposNombre{
         display: flex;
     }
 }
