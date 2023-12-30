@@ -12,7 +12,6 @@ const PokemonData = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    console.log('Efecto ejecutado con nombreParams:', nombreParams);
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nombreParams}`);
@@ -26,13 +25,9 @@ const PokemonData = () => {
       fetchData();
   }, [nombreParams, searchTerm]);
 
-
-  
-
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
-  
 
   const handleNavigate = (to) => {
     navigate(to);
@@ -87,6 +82,20 @@ const PokemonData = () => {
   
     comaAlNum(pokemonData.height, pokemonData.weight)
   
+    const stats = pokemonData.stats || [];
+    const statElements = stats.map((stat, index)=>(
+      <div  key={index} className='pokeIndPartes'>
+        <p className='pokeIndP1'>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</p>
+        <div className='pokeIndP2'>
+          <p>{stat.base_stat}</p>
+        </div>
+      </div>
+    ))
+
+    const goBack = () => {
+      navigate(-1)
+    }
+
     return (
       <>
       <Header/>
@@ -96,7 +105,7 @@ const PokemonData = () => {
           onNavigate={handleNavigate}
           />
         <div className='pokeInd'>
-          <a href='/' className='flotante'>Volver </a>
+          <p className='flotante' onClick={goBack}>Volver</p>
           <div className='pokeIndSup'>
             <div className='pokeIndSupP1'>
               <p className='pokemonDexNameInd'>{pokemonData.name}</p>
@@ -148,6 +157,8 @@ const PokemonData = () => {
               <p>{altura} m</p>
             </div>
           </div>
+          <h1>Datos</h1>
+          {statElements}
     
           </div>
         </main>

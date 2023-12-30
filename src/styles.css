@@ -355,6 +355,7 @@ body {
     /* Tipos */
     .pokemonTipos{
         margin: 0px;
+        justify-content: space-evenly;
     }
     .tipos{
         min-width: 30px;

@@ -23,12 +23,16 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
   }, [pokemonData]);
 
   const handleNextPage = () => {
-    setOffset(offset + 20);
+    const newOffset = offset + 20;
+    setOffset(newOffset)
+    navigate(`/pokemon?from=${newOffset+1}&to=${newOffset+20}`);
   };
 
   const handlePreviousPage = () => {
-    if (offset >= 20) {
-      setOffset(offset - 20);
+    if(offset>= 20){
+      const newOffset = offset - 20;
+      setOffset(newOffset)
+      navigate(`/pokemon?from=${newOffset+1}&to=${newOffset+20}`);
     }
   };
 

@@ -9,6 +9,7 @@ function App() {
     <div className="container">
       <Routes>
         <Route path='/' element={<Main />}/>
+        <Route path='/pokemon' element={<Main />}/>
         <Route path='/pokemon/:nombreParams' element={<PokemonData />}/>
       </Routes>
     </div>
