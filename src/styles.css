@@ -319,15 +319,10 @@ body {
 
 /* MEDIA QUERYS */
 
-/* 
-Cambios desde:
-- 0 a 480
-- 481 a 768
-- 769 a 1279
-- 1280+
-*/
-
 @media (0px <= width <= 480px){
+    *{
+        font-size: 14px;
+    }
     /* SideBar */
     .sidebar{
         display: none;
@@ -336,9 +331,21 @@ Cambios desde:
     .listaPokemons{
         width: 90%;
     }
+    /* Numero */
+    .pokemonDexNum{
+        margin: 0px 10px 0 10px;
+        font-size: 14px;
+    }
+    /* Espacio de la imagen */
+    .pokemonDexImgSpc{
+        margin: 0px 10px 0 10px;
+    }
     /* Nombres */
     .pokemonDexName{
         font-size: 14px;
+    }
+    .pokemonDexNameHeader{
+        margin: 0px 10px 0 10px;
     }
     /* Imagenes */
     .pokemonDexImg{
@@ -346,11 +353,51 @@ Cambios desde:
         height: 64px;
     }
     /* Tipos */
+    .pokemonTipos{
+        margin: 0px;
+    }
     .tipos{
-        min-width: 30px
+        min-width: 30px;
     }
     .tiposNombre{
         display: none;
+    }
+
+    /* Vista individual de Pokemones */
+    /* Logo */
+    .Logo-Dex span{
+        display: none;
+    }
+    /* Flotante */
+    .flotante{
+        top:10px;
+        left:10px;
+        font-size: 14px;
+    }
+    .pokeInd{
+        width: 90%;
+    }
+    .pokeIndSup{
+        margin-top: 35px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Imagen Individual */
+    .pokemonDexImgInd{
+        width: 200px;
+        aspect-ratio: 200/185;
+        height: 185px;
+    }
+    /* Descripciónes */
+    .pokeIndPartes{
+        border-top: 1px solid;
+    }
+    .pokemonTiposInd .tipos{
+        min-width: 100px;
+    }
+    .tiposNombre{
+        display: flex;
     }
 }
 @media (600px <= width <= 1280px){
@@ -358,3 +405,11 @@ Cambios desde:
         background-color: red
     };
 }
+
+/* 
+Cambios desde:
+- 0 a 480
+- 481 a 768
+- 769 a 1279
+- 1280+
+*/
