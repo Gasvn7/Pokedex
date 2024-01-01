@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
-import PokeSideBar from './PokeSideBar';
 import PokemonType from './PokemonType';
 import Footer from './Footer';
 
@@ -99,12 +98,11 @@ const PokemonData = () => {
 
     return (
       <>
-      <Header/>
+      <Header 
+        onSearch={handleSearch}
+        onNavigate={handleNavigate}
+      />
       <main className='pokeMain'>
-        <PokeSideBar
-          onSearch={handleSearch}
-          onNavigate={handleNavigate}
-          />
         <div className='pokeInd'>
           <p className='flotante' onClick={goBack}>Volver</p>
           <div className='pokeIndSup'>
@@ -167,7 +165,18 @@ const PokemonData = () => {
       </>
     );
   } else {
-    return <div>ERROR</div>
+    return <>
+      <Header 
+        onSearch={handleSearch}
+        onNavigate={handleNavigate}
+      />
+        <main className='pokeMain'>
+          <div className='pokeInd'>
+            <p className='pokeError'>El Pokémon {nombreParams} no existe.</p>
+          </div>
+        </main>
+      <Footer/>
+    </>
   }
 };
 

@@ -4,8 +4,6 @@
 
 header{
     height: 100px;
-    display: flex;
-    align-items: center;
 }
 
 p{
@@ -31,51 +29,28 @@ body {
 }
 
 .navegacionBut{
+    display: flex;
+    justify-content: space-around;
     padding: 20px;
 }
 
-.sidebar{
-    width: 20%;
-    padding: 15px 0;
-    background-color: antiquewhite;
-    display:flex;
-    border: 1px solid black;
-    align-items: center;
-    flex-direction: column;
-}
-
-.sidebar form{
+.navegacionBut form{
     display: flex;
     padding: 10px 0;
 }
 
-.sidebar input{
+.navegacionBut input{
     font-size: 16px;
-    height: 30px;
+    height: 38px;
 }
 
-.sidebar button{
-    font-size: 20px;
-}
-
-.sidebar button i{
+.navegacionBut button i{
     padding-top: 5px;
+    font-size: 25px;
 }
 
-.sidebar input[type="text"]:focus {
+.navegacionBut input[type="text"]:focus {
     outline: none;
-}
-
-.sidebarLinks {
-    width: 100%;
-    display: flex;
-    font-weight: bold;
-    text-transform: capitalize;
-    font-family: sans-serif;
-    color: black;
-    text-decoration: none;
-    justify-content: center;
-    padding: 10px 0;
 }
 
 .Logo-Dex{
@@ -91,12 +66,13 @@ body {
 
 /* CONTENEDOR DE LA LISTA DE POKEMONES */
 .listaPokemons{
-    width: 60%;
+    width: 90%;
     list-style-type: none;
     margin: 0;
     background-color: antiquewhite;
     padding: 0;
     border: 1px solid black;
+    border-radius: 8px;
 }
 
 .headersLista{
@@ -189,18 +165,13 @@ body {
 
 /* Botones para Siguiente | Anterior */
 
-.SigAntPage{
-    height: 25px;
-}
-
 .botonSigAnt{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     position: relative;
 }
 
-.SigAntPageSup,
-.SigAntPageInf {
+.SigAntPage{
     background-color: rgb(242, 200, 146);
     border: 1px solid black;
     color: rgb(0, 0, 0);
@@ -214,9 +185,22 @@ body {
     border-radius: 8px;
 }
 
-.SigAntPageSup:hover,
-.SigAntPageInf:hover{
+.SigAntPage:hover{
     background-color: rgb(241, 183, 108);
+}
+
+.SigAntDisable{
+    background-color: rgb(241, 183, 108);
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 20px;
+    cursor: not-allowed;
+    border-radius: 8px;
 }
 
 /* Estilos de vista de Pokemon Individual */
@@ -251,8 +235,8 @@ body {
 }
 
 .pokemonDexImgInd{
-    height: 350px;
-    width: 350px;
+    width: 300px;
+    height: 285px;
 }
 
 .pokemonDexNumInd{
@@ -317,17 +301,42 @@ body {
     margin-bottom: 5px;
 }
 
-/* Footer */
-.FooterIconsContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.FooterIcons{
-    margin: 50px 10px 20px 0;
+.pokeError{
+    margin:50px;
+    font-size: 25px;
     font-weight: bold;
 }
-.FooterIcons svg{
+
+/* Footer */
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.Contacto{
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: underline;
+}
+.FooterIconsContainer{
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+}
+.FooterIconsContainer a{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    padding-left: 15px;
+    text-decoration: none;
+}
+.FooterIconsContainer p{
+    color: black;
+    padding-right: 5px;
+}
+.FooterIconsContainer svg{
     height: 32px;
     width: 32px;
 }
@@ -338,14 +347,7 @@ body {
     *{
         font-size: 14px;
     }
-    /* SideBar */
-    .sidebar{
-        display: none;
-    }
     /* Detalles de Pokemon */
-    .listaPokemons{
-        width: 90%;
-    }
     /* Numero */
     .pokemonDexNum{
         margin: 0px 10px 0 10px;
@@ -401,7 +403,6 @@ body {
     /* Imagen Individual */
     .pokemonDexImgInd{
         width: 200px;
-        aspect-ratio: 200/185;
         height: 185px;
     }
     /* Descripciónes */
@@ -416,26 +417,18 @@ body {
     }
     /* Footer */
     .FooterIconsContainer{
-        justify-content: flex-end;
-    }
-}
-@media (769px <= width <= 1024px){
-
-    /* Barra de busqueda */
-    .sidebar input{
-        width: 100px;
-    }
-
-    /* Tipos en la Lista */
-    .pokemonTipos{
+        width: 60%;
         justify-content: space-evenly;
     }
-    .tipos{
-        min-width: 30px;
-    }
-    .tiposNombre{
+    .FooterIconsContainer p{
         display: none;
     }
+    .FooterIconsContainer a{
+        padding: 0;
+    }
+}
+
+@media (769px <= width <= 1024px){
 
     /* Vista Individual */
     .pokeIndSup{
@@ -453,12 +446,7 @@ body {
     }
 }
 
-@media (1025px <= width) {
-    .pokemonDexImgInd{
-        width: 200px;
-        height: 185px;
-    }
-}
+
 
 /* 
 Cambios desde:

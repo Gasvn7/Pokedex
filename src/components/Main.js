@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import PokeData from './PokeData';
-import PokeSideBar from './PokeSideBar';
 import Footer from './Footer';
 
 const Main = () => {
@@ -37,12 +36,11 @@ const Main = () => {
 
   return (
     <>
-      <Header />
+      <Header 
+      onSearch={handleSearch}
+      onNavigate={handleNavigate}
+      />
       <main className='pokeMain'>
-        <PokeSideBar
-          onSearch={handleSearch}
-          onNavigate={handleNavigate}
-        />
         <PokeData
           pokemonData={pokemonData}
           offset={offset}
