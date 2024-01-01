@@ -97,10 +97,10 @@ const PokeData = ({ pokemonData, offset, setOffset }) => {
         </li>
       ))}
       <li className='botonSigAnt'>
-        <button className="SigAntPageInf" onClick={handlePreviousPage} disabled={offset === 0}>
+        <button className={offset === 0 ? "SigAntDisable" : "SigAntPage"} onClick={handlePreviousPage} disabled={offset === 0}>
           Anterior
         </button>
-        <button className="SigAntPageInf" onClick={handleNextPage} disabled={offset >= 980}>
+        <button className={offset >= 980 ? "SigAntDisable" : "SigAntPage"} onClick={handleNextPage} disabled={offset >= 980}>
           Siguiente
         </button>
       </li>
