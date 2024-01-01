@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import PokeSideBar from './PokeSideBar';
 import PokemonType from './PokemonType';
+import Footer from './Footer';
 
 const PokemonData = () => {
   const { nombreParams } = useParams();
@@ -162,6 +163,7 @@ const PokemonData = () => {
     
           </div>
         </main>
+        <Footer/>
       </>
     );
   } else {

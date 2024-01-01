@@ -7,9 +7,10 @@ export default function Header() {
         <nav className='navegacionBut'>
           <a href='/' className='Logo-Dex'>
             <img src={logo} alt='Poke-Dex Logo'/>
+            
             <span>Poke-Dex</span>
           </a>
-        </nav>
+        </nav>  
     </header>
   )
 }

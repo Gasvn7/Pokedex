@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import PokeData from './PokeData';
 import PokeSideBar from './PokeSideBar';
+import Footer from './Footer';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ const Main = () => {
           setOffset={setOffset}
         />
       </main>
+      <Footer/>
     </>
   );
 };
