@@ -29,8 +29,8 @@ function PokeSideBar({ onSearch, onNavigate }) {
         </button>
       </form>
       <a href='/' className='sidebarLinks'>Lista de pokémon</a>
-      <a href='/' className='sidebarLinks'>Equipos</a>
-      <a href='/' className='sidebarLinks'>Regiones</a>
+      {/* <a href='/' className='sidebarLinks'>Equipos</a> */}
+      {/* <a href='/' className='sidebarLinks'>Regiones</a> */}
     </div>
   );
 }
